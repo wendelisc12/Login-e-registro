@@ -24,7 +24,7 @@ export default function login({navigation}) {
       <TextInput style={styles.inputText} placeholder="Insira sua senha" keyboardType="visible-password"></TextInput>
 
       <View style={styles.botaoContainer}>
-        <Button color="#288BE4" title="Login"></Button>
+        <Button color="#288BE4" title="Login" onPress={()=>{ navigation.navigate('listaContatos')}}></Button>
 
         <Text style={styles.link} onPress={() => { navigation.navigate('register') } }> Registrar </Text> 
       </View>
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     width:150,
     height:150,
     borderRadius:100,
-    backgroundColor: '#ff0000',
+    backgroundColor: '#fff',
   },
 
   imagemPerfilContainer:{

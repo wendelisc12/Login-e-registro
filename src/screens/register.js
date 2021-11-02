@@ -5,24 +5,19 @@ import { NavigationContainer } from '@react-navigation/native'
 export default function registrar({navigation}) {
   return (
     <View style={styles.container}>
-        <View style={styles.imagemPerfilContainer}>
-            <Image
-            style={styles.imagemPerfil}
-            source={{
-                uri: 'https://www.donkey.bike/wp-content/uploads/2020/12/user-member-avatar-face-profile-icon-vector-22965342-300x300.jpg',
-            }}
-            />
-        </View>
 
         <View>
             <Text style={styles.label}>Nome:</Text>
             <TextInput style={styles.inputText} placeholder="Insira seu nome" keyboardType="default"></TextInput>
 
             <Text style={styles.label}>CPF:</Text>
-            <TextInput style={styles.inputText} placeholder="Insira seu nome" keyboardType="default"></TextInput>
+            <TextInput style={styles.inputText} placeholder="Insira seu CPF" keyboardType="default"></TextInput>
 
             <Text style={styles.label}>Email:</Text>
-            <TextInput style={styles.inputText} placeholder="Insira seu nome" keyboardType="email-address"></TextInput>
+            <TextInput style={styles.inputText} placeholder="Insira seu Email" keyboardType="email-address"></TextInput>
+            
+            <Text style={styles.label}>Senha:</Text>
+            <TextInput style={styles.inputText} placeholder="Insira sua Senha" keyboardType="default"></TextInput>
         </View>
 
         <View style={styles.salvar}>        
