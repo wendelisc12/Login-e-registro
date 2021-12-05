@@ -1,9 +1,32 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, View, Text, TextInput, Button, Image, Linking } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import {} from '@react-navigation/native'
 
 export default function login({navigation}) {
+
+  
+
+  function loginFirebase(){
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, senha)
+      .then((userCredential) => {
+        console.log('conectado')
+        const user = userCredential.user;
+        navigation.navigate('listaContatos')
+      })
+      .catch((error) => {
+        console.log("não conectado")
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+
+      
+  }
+
+  const [email,setEmail] = useState("")
+  const [senha,setSenha] = useState("")
 
   return (
     <View style={styles.container}>
@@ -18,13 +41,13 @@ export default function login({navigation}) {
       </View>
 
       <Text style={styles.label}>Login:</Text>
-      <TextInput style={styles.inputText} placeholder="Insira seu email" keyboardType="email-address"></TextInput>
+      <TextInput style={styles.inputText} placeholder="Insira seu email" keyboardType="email-address" value={email} onChangeText={email => setEmail(email)}></TextInput>
 
       <Text style={styles.label}>Senha:</Text>
-      <TextInput style={styles.inputText} placeholder="Insira sua senha" keyboardType="visible-password"></TextInput>
+      <TextInput style={styles.inputText} placeholder="Insira sua senha" keyboardType="visible-password" value={senha} onChangeText={senha => setSenha(senha)}></TextInput>
 
       <View style={styles.botaoContainer}>
-        <Button color="#288BE4" title="Login" onPress={()=>{ navigation.navigate('listaContatos')}}></Button>
+        <Button color="#288BE4" title="Login" onPress={()=>{ loginFirebase() }}></Button>
 
         <Text style={styles.link} onPress={() => { navigation.navigate('register') } }> Registrar </Text> 
       </View>
